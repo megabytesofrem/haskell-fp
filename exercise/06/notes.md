@@ -20,6 +20,14 @@ instance (Eq a, Eq b) => Eq (a, b)
 
 ## Ord
 Ord is a typeclass for things that can be *ordered*. It's *minimal* definition is `<=` or `compare`.
+
+Ord **implies** Eq, Eq is a superclass of Ord. Its definition is:
+```hs
+-- for a to be a valid Ord, it must also have an instance of Eq typeclass
+class Eq a => Ord a where
+  ..
+```
+
 ```hs
 -- full definition
 class Eq a => Ord a where
@@ -33,3 +41,14 @@ class Eq a => Ord a where
 
   --{-# MINIMAL compare | (<=) #-}
 ```
+
+## Show
+`Show` is a typeclass that controls how to "show" or format data. It's *minimal* definition
+is `show :: a -> String`.
+
+`Show` is basically `Display` trait from Rust.
+
+## Read
+`Read` is a typeclass that controls how to "read" or convert strings into things. It's
+*minimal* definition is `read :: Read a => String -> a`.
+
