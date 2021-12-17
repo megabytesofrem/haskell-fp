@@ -20,3 +20,13 @@ celebrate :: String -> String
 celebrate = (++ " woot!")
 
 -- celebrate "naptime" - naptime woot!
+```
+
+## Asserting Types
+`let triple x = x * 3` by default has a polymorphic type `triple :: Num a => a -> a`. If we want to assert
+that it only works with `Integer`, we can use `::`. So:
+
+- `let triple x = x * 3 :: Integer` 
+
+(Without `{-# LANGUAGE NoMonomorphismRestriction #-}` Haskell automatically resolves toplevel declarations
+to their most concrete type.)
